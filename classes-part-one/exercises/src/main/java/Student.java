@@ -1,56 +1,54 @@
-public class Student {         //creating field
-        private String name;
-        private int studentId;
-        private int numberOfCredits = 0;
-        private double gpa = 0.0;
+public class Student {
 
-        // Drop your getters and setters below for the Student class.
+    private static int nextStudentId = 1;
+    private static String name;
+    private static int studentId;
+    private int numberOfCredits;
+    private static double gpa;
 
-
-    // To instantiate the Student class, add your code to the main in the file, SchoolPractice.
-
-    //constructor
-        public Student (String name, int studentId, int numberOfCredits, double gpa) {
-            this.name = name;
-            this.studentId = studentId;
-            this.numberOfCredits = numberOfCredits;
-            this.gpa = gpa;
-        }
-
-        //getters and setters
-
-
-    public void setName(String name) {
+    public Student(String name, int studentId,
+                   int numberOfCredits, double gpa) {
         this.name = name;
-    }
-
-    public void setStudentId(int studentId) {
         this.studentId = studentId;
-    }
-
-    public void setGpa(double gpa) {
+        this.numberOfCredits = numberOfCredits;
         this.gpa = gpa;
     }
 
-    private void setNumberOfCredits(int numberOfCredits) {
-        this.numberOfCredits = numberOfCredits;
+    public Student(String name, int studentId) {
+        this(name, studentId, 0, 0);
     }
 
-    public String getName() {
-        return name;
+    public Student(String name) {
+        this(name, nextStudentId);
+        nextStudentId++;
     }
 
-    public int getStudentId() {
-        return studentId;
+    public static String studentInfo() {
+        return (name + " has student ID " + studentId + " and a GPA of: " + gpa);
     }
 
-    public int getNumberOfCredits() {
-        return numberOfCredits;
+    public void addGrade(int courseCredits, double grade) {
+
+        // Update the appropriate fields: numberOfCredits, gpa
+       // return
     }
 
-    public double getGpa() {
-        return gpa;
+    public String getGradeLevel() {
+        // Determine the grade level of the student based on numberOfCredits
+        String gradeLevel;
+
+        if (numberOfCredits >= 90) {
+            gradeLevel = "senior";
+        } else if (numberOfCredits >= 60) {
+            gradeLevel = "junior";
+        } else if (numberOfCredits >= 30) {
+            gradeLevel = "sophomore";
+        } else {
+            gradeLevel = "freshman";
+        }
+        return gradeLevel;
     }
+
+    /* getters and setters omitted */
 
 }
-
